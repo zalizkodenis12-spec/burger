@@ -1,13 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, RefObject } from "react";
 import { useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 
 const FRAME_COUNT = 240;
 
-export default function CanvasSequence() {
+interface CanvasSequenceProps {
+  scrollContainerRef?: RefObject<HTMLElement | null>;
+}
+
+export default function CanvasSequence({ scrollContainerRef }: CanvasSequenceProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { scrollYProgress } = useScroll();
+  
+  // Use either the provided container or the default window scroll
+  const { scrollYProgress } = useScroll(
+    scrollContainerRef ? { container: scrollContainerRef } : undefined
+  );
   const [images, setImages] = useState<HTMLImageElement[]>([]);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
