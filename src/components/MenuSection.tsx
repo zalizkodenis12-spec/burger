@@ -15,26 +15,23 @@ export default function MenuSection() {
 
   return (
     <section className="relative w-full bg-[#FFB800] z-20 pb-32">
-      {/* Smoother Wavy SVG Divider with Outline (Аутлайн) */}
+      {/* Wavy SVG Divider */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none transform -translate-y-full">
         <svg
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
-          className="relative block w-full h-[100px] md:h-[150px]"
-          style={{ filter: "drop-shadow(0 -4px 6px rgba(0,0,0,0.1))" }}
+          className="relative block w-full h-[150px]"
         >
           <path
-            d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z"
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.47,130.83,115.3,192.73,101.4c31.33-7.14,62.33-17.65,92.93-27.16C302.26,70.52,311.53,67.8,321.39,56.44Z"
             className="fill-[#FFB800]"
-            stroke="#0B0C10"
-            strokeWidth="4"
           ></path>
         </svg>
       </div>
 
       <div className="max-w-5xl mx-auto px-6 pt-24 text-center">
         <h2 className="text-7xl md:text-8xl font-extrabold text-[#0B0C10] mb-16 tracking-wide drop-shadow-md">
-          Ознайомтеся з колекцією Підпис
+          Ознайомтеся з колекцією BurgerMaster
         </h2>
         
         {/* Changed to 2 columns for a perfect 2x2 grid */}
