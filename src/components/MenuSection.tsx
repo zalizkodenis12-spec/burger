@@ -15,23 +15,26 @@ export default function MenuSection() {
 
   return (
     <section className="relative w-full bg-[#FFB800] z-20 pb-32">
-      {/* Smoother Wavy SVG Divider */}
+      {/* Smoother Wavy SVG Divider with Outline (Аутлайн) */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none transform -translate-y-full">
         <svg
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
           className="relative block w-full h-[100px] md:h-[150px]"
+          style={{ filter: "drop-shadow(0 -4px 6px rgba(0,0,0,0.1))" }}
         >
           <path
             d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z"
             className="fill-[#FFB800]"
+            stroke="#0B0C10"
+            strokeWidth="4"
           ></path>
         </svg>
       </div>
 
       <div className="max-w-5xl mx-auto px-6 pt-24 text-center">
-        <h2 className="text-5xl md:text-6xl font-bold text-[#0B0C10] mb-16 tracking-wide drop-shadow-sm">
-          Ознайомтеся з колекцією Signature
+        <h2 className="text-7xl md:text-8xl font-extrabold text-[#0B0C10] mb-16 tracking-wide drop-shadow-md">
+          Ознайомтеся з колекцією Підпис
         </h2>
         
         {/* Changed to 2 columns for a perfect 2x2 grid */}
