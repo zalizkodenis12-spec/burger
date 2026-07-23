@@ -21,6 +21,11 @@ export default function Home() {
 
       {/* The new Menu Section that slides up after the animation finishes */}
       <MenuSection />
+
+      {/* Empty White Block to receive the bottom transition wave */}
+      <section className="relative w-full h-screen bg-white flex items-center justify-center">
+         {/* Can put future content here */}
+      </section>
     </main>
   );
 }
