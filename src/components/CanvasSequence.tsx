@@ -120,7 +120,6 @@ export default function CanvasSequence() {
       <canvas
         ref={canvasRef}
         className="w-full h-full object-cover"
-        style={{ imageRendering: "high-quality" }}
       />
     </div>
   );
