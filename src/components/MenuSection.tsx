@@ -4,16 +4,14 @@ import { useState } from "react";
 import BurgerModal from "./BurgerModal";
 
 const BURGERS = [
-  { id: 1, name: "The Truffle Wagyu", price: "$24" },
-  { id: 2, name: "Spicy Jalapeno Crunch", price: "$18" },
-  { id: 3, name: "Double Smash Classic", price: "$16" },
-  { id: 4, name: "Vegan Beyond Supreme", price: "$19" },
-  { id: 5, name: "Crispy Chicken Honey", price: "$17" },
-  { id: 6, name: "The Blue Cheese Volcano", price: "$22" },
+  { id: 1, name: "Burger 1", price: "18$", folder: "/images/burger1" },
+  { id: 2, name: "Burger 2", price: "24$", folder: "/images/burger2" },
+  { id: 3, name: "Burger 3", price: "16$", folder: "/images/burger3" },
+  { id: 4, name: "Burger 4", price: "19$", folder: "/images/burger4" },
 ];
 
 export default function MenuSection() {
-  const [selectedBurger, setSelectedBurger] = useState<string | null>(null);
+  const [selectedBurger, setSelectedBurger] = useState<{name: string, folder: string} | null>(null);
 
   return (
     <section className="relative w-full bg-[#FFB800] z-20 pb-32">
@@ -36,30 +34,35 @@ export default function MenuSection() {
           Explore The Signature Collection
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* Changed to 4 columns on large screens for the 4 items */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {BURGERS.map((burger) => (
             <div 
               key={burger.id}
-              onClick={() => setSelectedBurger(burger.name)}
+              onClick={() => setSelectedBurger({ name: burger.name, folder: burger.folder })}
               className="group cursor-pointer flex flex-col items-center"
             >
-              {/* White placeholder for the burger image */}
+              {/* Image using the first frame of its sequence */}
               <div className="w-full aspect-square bg-white rounded-3xl shadow-lg mb-6 overflow-hidden relative transition-transform duration-500 group-hover:scale-105 group-hover:shadow-2xl flex items-center justify-center">
-                <span className="text-gray-300 font-medium">Image Placeholder</span>
+                <img 
+                  src={`${burger.folder}/ezgif-frame-001.jpg`} 
+                  alt={burger.name} 
+                  className="w-full h-full object-cover"
+                />
                 
                 {/* Hover overlay hint */}
-                <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                    <div className="bg-white/90 text-[#0B0C10] font-semibold px-4 py-2 rounded-full text-sm backdrop-blur-sm shadow-sm transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                      Click to Explode
                    </div>
                 </div>
               </div>
               
-              {/* Text Info */}
-              <h3 className="text-2xl font-bold text-[#0B0C10] group-hover:text-[#FF5E00] transition-colors">
+              {/* Text Info - Removed the hover red text effect */}
+              <h3 className="text-2xl font-bold text-[#0B0C10] transition-colors">
                 {burger.name}
               </h3>
-              <p className="text-xl font-medium text-[#0B0C10]/70 mt-2">
+              <p className="text-xl font-bold text-[#0B0C10]/80 mt-2">
                 {burger.price}
               </p>
             </div>
@@ -70,7 +73,8 @@ export default function MenuSection() {
       {/* The isolated modal for the burger explosion */}
       <BurgerModal 
         isOpen={selectedBurger !== null}
-        burgerName={selectedBurger || ""}
+        burgerName={selectedBurger?.name || ""}
+        folderPath={selectedBurger?.folder || ""}
         onClose={() => setSelectedBurger(null)}
       />
     </section>

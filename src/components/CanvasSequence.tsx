@@ -7,9 +7,10 @@ const FRAME_COUNT = 240;
 
 interface CanvasSequenceProps {
   scrollContainerRef?: RefObject<HTMLElement | null>;
+  folderPath?: string;
 }
 
-export default function CanvasSequence({ scrollContainerRef }: CanvasSequenceProps) {
+export default function CanvasSequence({ scrollContainerRef, folderPath = "/images" }: CanvasSequenceProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
   // Use either the provided container or the default window scroll
@@ -23,12 +24,16 @@ export default function CanvasSequence({ scrollContainerRef }: CanvasSequencePro
   useEffect(() => {
     const loadedImages: HTMLImageElement[] = [];
     let loadedCount = 0;
+    
+    // Reset state when folderPath changes
+    setImagesLoaded(false);
+    setImages([]);
 
     for (let i = 1; i <= FRAME_COUNT; i++) {
       const img = new Image();
       // File names: ezgif-frame-001.jpg to ezgif-frame-240.jpg
       const frameNum = i.toString().padStart(3, "0");
-      img.src = `/images/ezgif-frame-${frameNum}.jpg`;
+      img.src = `${folderPath}/ezgif-frame-${frameNum}.jpg`;
       
       img.onload = () => {
         loadedCount++;
@@ -39,7 +44,7 @@ export default function CanvasSequence({ scrollContainerRef }: CanvasSequencePro
       loadedImages.push(img);
     }
     setImages(loadedImages);
-  }, []);
+  }, [folderPath]);
 
   // Map scroll progress (0 to 1) to frame index (0 to 239)
   const frameIndex = useTransform(scrollYProgress, [0, 1], [0, FRAME_COUNT - 1]);

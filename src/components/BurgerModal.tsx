@@ -7,9 +7,10 @@ interface BurgerModalProps {
   isOpen: boolean;
   onClose: () => void;
   burgerName: string;
+  folderPath: string;
 }
 
-export default function BurgerModal({ isOpen, onClose, burgerName }: BurgerModalProps) {
+export default function BurgerModal({ isOpen, onClose, burgerName, folderPath }: BurgerModalProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Prevent body scroll when modal is open
@@ -48,8 +49,8 @@ export default function BurgerModal({ isOpen, onClose, burgerName }: BurgerModal
         ref={scrollContainerRef}
         className="w-full h-full overflow-y-auto overflow-x-hidden relative"
       >
-        {/* Render a separate instance of CanvasSequence bound to this scroll container */}
-        <CanvasSequence scrollContainerRef={scrollContainerRef} />
+        {/* Render a separate instance of CanvasSequence bound to this scroll container and specific folder */}
+        <CanvasSequence scrollContainerRef={scrollContainerRef} folderPath={folderPath} />
         
         {/* The tall spacer to allow scrolling through the 240 frames */}
         <div className="relative z-10 w-full h-[800vh]">
