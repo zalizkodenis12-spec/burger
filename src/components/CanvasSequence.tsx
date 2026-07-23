@@ -39,19 +39,16 @@ export default function CanvasSequence() {
   useMotionValueEvent(frameIndex, "change", (latest) => {
     if (!imagesLoaded || !canvasRef.current || !images.length) return;
     
-    const ctx = canvasRef.current.getContext("2d");
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const index = Math.round(latest);
     const img = images[index];
 
     if (img && img.complete) {
-      // Draw image covering the canvas (like object-fit: cover)
-      const canvas = canvasRef.current;
-      const ctx = canvas.getContext("2d");
-      
       // Clear canvas before drawing
-      ctx?.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       // Calculate ratios to emulate object-fit: cover
       const hRatio = canvas.width / img.width;
@@ -61,7 +58,7 @@ export default function CanvasSequence() {
       const centerShift_x = (canvas.width - img.width * ratio) / 2;
       const centerShift_y = (canvas.height - img.height * ratio) / 2;
       
-      ctx?.drawImage(
+      ctx.drawImage(
         img,
         0, 0, img.width, img.height,
         centerShift_x, centerShift_y, img.width * ratio, img.height * ratio
@@ -73,22 +70,30 @@ export default function CanvasSequence() {
   useEffect(() => {
     const handleResize = () => {
       if (canvasRef.current) {
-        canvasRef.current.width = window.innerWidth;
-        canvasRef.current.height = window.innerHeight;
+        const dpr = window.devicePixelRatio || 1;
+        const canvas = canvasRef.current;
+        
+        // Scale canvas internal resolution for high-DPI displays (retina)
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        
+        // Keep CSS dimensions to match screen size
+        canvas.style.width = `${window.innerWidth}px`;
+        canvas.style.height = `${window.innerHeight}px`;
         
         // Redraw current frame
         if (imagesLoaded && images.length > 0) {
           const index = Math.round(frameIndex.get());
           const img = images[index];
-          if (img) {
-            const ctx = canvasRef.current.getContext("2d");
-            const hRatio = canvasRef.current.width / img.width;
-            const vRatio = canvasRef.current.height / img.height;
+          if (img && img.complete) {
+            const ctx = canvas.getContext("2d");
+            const hRatio = canvas.width / img.width;
+            const vRatio = canvas.height / img.height;
             const ratio = Math.max(hRatio, vRatio);
-            const centerShift_x = (canvasRef.current.width - img.width * ratio) / 2;
-            const centerShift_y = (canvasRef.current.height - img.height * ratio) / 2;
+            const centerShift_x = (canvas.width - img.width * ratio) / 2;
+            const centerShift_y = (canvas.height - img.height * ratio) / 2;
             
-            ctx?.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+            ctx?.clearRect(0, 0, canvas.width, canvas.height);
             ctx?.drawImage(
               img,
               0, 0, img.width, img.height,
@@ -115,12 +120,8 @@ export default function CanvasSequence() {
       <canvas
         ref={canvasRef}
         className="w-full h-full object-cover"
+        style={{ imageRendering: "high-quality" }}
       />
-      {/* 
-        A subtle radial gradient to help text readability over the image. 
-        It mimics the dark intimate lighting of a premium restaurant.
-      */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(11,12,16,0.8)_100%)] pointer-events-none" />
     </div>
   );
 }
