@@ -16,7 +16,7 @@ export default function MenuSection() {
   return (
     <section className="relative w-full bg-[#FFB800] z-20 pb-32">
       {/* Top Smoother Wavy SVG Divider */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none transform -translate-y-full">
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none transform -translate-y-[calc(100%-1px)]">
         <svg
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
@@ -71,7 +71,7 @@ export default function MenuSection() {
       </div>
 
       {/* Bottom Smoother Wavy SVG Divider (Flipped Vertically) */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none transform translate-y-full -scale-y-100 z-20">
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none transform translate-y-[calc(100%-1px)] -scale-y-100 z-20">
         <svg
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
