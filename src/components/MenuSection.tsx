@@ -15,7 +15,7 @@ export default function MenuSection() {
 
   return (
     <section className="relative w-full bg-[#FFB800] z-20 pb-32">
-      {/* Smoother Wavy SVG Divider */}
+      {/* Top Smoother Wavy SVG Divider */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none transform -translate-y-full">
         <svg
           viewBox="0 0 1200 120"
@@ -70,15 +70,15 @@ export default function MenuSection() {
         </div>
       </div>
 
-      {/* Bottom Wavy SVG Divider (Rotated) */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none transform translate-y-full rotate-180 z-20">
+      {/* Bottom Smoother Wavy SVG Divider (Flipped Vertically) */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none transform translate-y-full -scale-y-100 z-20">
         <svg
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
-          className="relative block w-full h-[150px]"
+          className="relative block w-full h-[100px] md:h-[150px]"
         >
           <path
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.47,130.83,115.3,192.73,101.4c31.33-7.14,62.33-17.65,92.93-27.16C302.26,70.52,311.53,67.8,321.39,56.44Z"
+            d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z"
             className="fill-[#FFB800]"
           ></path>
         </svg>

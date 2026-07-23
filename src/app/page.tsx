@@ -23,7 +23,7 @@ export default function Home() {
       <MenuSection />
 
       {/* Empty White Block to receive the bottom transition wave */}
-      <section className="relative w-full h-screen bg-white flex items-center justify-center">
+      <section className="relative w-full min-h-[200vh] bg-white flex items-start justify-center pt-32">
          {/* Can put future content here */}
       </section>
     </main>
