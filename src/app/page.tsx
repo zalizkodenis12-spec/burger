@@ -14,7 +14,7 @@ const ScrollBlock = ({ align, title, desc }: { align: "left" | "right", title: s
       exit={{ opacity: 0, y: -100 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: false, margin: "-30% 0px -30% 0px" }}
-      className={`w-full max-w-md px-6 md:px-0 ${align === "left" ? "md:ml-[5%]" : "md:ml-auto md:mr-[5%]"}`}
+      className={`w-full max-w-md px-6 md:px-0 ${align === "left" ? "md:ml-[15%]" : "md:ml-auto md:mr-[15%]"}`}
     >
       <h3 className="text-4xl md:text-5xl font-serif font-bold text-[#0B0C10] mb-6 drop-shadow-sm">{title}</h3>
       <p className="text-xl md:text-2xl font-sans font-medium text-[#0B0C10]/80 leading-relaxed">{desc}</p>
