@@ -27,17 +27,27 @@ export default function Home() {
       </div>
 
       {/* Huge Background Text */}
-      <div className="fixed inset-0 w-full h-screen flex items-center justify-center z-0 pointer-events-none">
+      <div className="fixed inset-0 w-full h-screen flex items-center justify-between z-0 pointer-events-none px-[4vw]">
         <h1 
-          className="text-[12vw] md:text-[15vw] font-serif tracking-[0.2em] md:tracking-[0.5em] text-[#0B0C10] font-bold opacity-90 flex w-full justify-between px-[5vw]"
+          className="text-[12vw] md:text-[14vw] font-serif text-[#0B0C10] font-bold opacity-90 flex w-full justify-between"
           style={{ fontFamily: "'Playfair Display', 'Georgia', serif" }}
         >
-          <span>B</span>
-          <span>U</span>
-          <span>R</span>
-          <span>G</span>
-          <span>E</span>
-          <span>R</span>
+          {/* Left Side: B U R */}
+          <div className="flex w-[40%] justify-between">
+            <span>B</span>
+            <span>U</span>
+            <span>R</span>
+          </div>
+
+          {/* Large Center Gap for the Burger to prevent overlap */}
+          <div className="w-[20%] flex-shrink-0"></div>
+
+          {/* Right Side: G E R */}
+          <div className="flex w-[40%] justify-between">
+            <span>G</span>
+            <span>E</span>
+            <span>R</span>
+          </div>
         </h1>
       </div>
 
