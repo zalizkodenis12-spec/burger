@@ -104,29 +104,29 @@ export default function Home() {
         <CanvasSequence />
       </div>
 
-      {/* Scrollable Content Container for Scrollytelling (800vh height drives the canvas animation) */}
-      <div className="relative z-10 w-full h-[800vh]">
+      {/* Scrollable Content Container for Scrollytelling (1000vh height drives the canvas animation) */}
+      <div className="relative z-10 w-full h-[1000vh]">
         <ScrollBlock 
           align="left" 
-          top="150vh"
+          top="200vh"
           title="Свіжі інгредієнти" 
           desc="Тільки найкраще відбірне м'ясо та хрусткі овочі від локальних фермерів. Ми обираємо безкомпромісну якість, яку ви можете відчути в кожному шматочку." 
         />
         <ScrollBlock 
           align="right" 
-          top="350vh"
+          top="400vh"
           title="Авторські рецепти" 
           desc="Наші фірмові соуси – це секрет, який робить смак неповторним. Ідеальні пропорції, розроблені справжніми фанатами бургерної культури." 
         />
         <ScrollBlock 
           align="left" 
-          top="550vh"
+          top="600vh"
           title="Ідеальне просмаження" 
           desc="Соковита котлета, приготована саме так, як ви любите. Максимум насиченого смаку, який розкривається з першим укусом." 
         />
         <ScrollBlock 
           align="right" 
-          top="750vh"
+          top="800vh"
           title="Атмосфера смаку" 
           desc="Бургер – це не просто їжа, це емоція. Насолоджуйтесь кожною хвилиною та кожним смаком у затишній атмосфері нашого закладу." 
         />
@@ -134,6 +134,9 @@ export default function Home() {
 
       {/* The new Menu Section that slides up after the animation finishes */}
       <MenuSection />
+
+      {/* Pure White Section at the end as requested */}
+      <div className="w-full h-screen bg-white relative z-20"></div>
 
       {/* Empty White Block to receive the bottom transition wave */}
       <section className="relative w-full min-h-[200vh] bg-white flex items-start justify-center pt-32">

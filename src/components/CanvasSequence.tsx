@@ -47,7 +47,8 @@ export default function CanvasSequence({ scrollContainerRef, folderPath = "/imag
   }, [folderPath]);
 
   // Map scroll progress (0 to 1) to frame index (0 to 239)
-  const frameIndex = useTransform(scrollYProgress, [0, 1], [0, FRAME_COUNT - 1]);
+  // We use [0, 0.7] so the animation finishes before the bottom sections (yellow menu, white footer) scroll into view
+  const frameIndex = useTransform(scrollYProgress, [0, 0.7], [0, FRAME_COUNT - 1]);
 
   useMotionValueEvent(frameIndex, "change", (latest) => {
     if (!imagesLoaded || !canvasRef.current || !images.length) return;
