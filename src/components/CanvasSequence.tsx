@@ -63,10 +63,10 @@ export default function CanvasSequence({ scrollContainerRef, folderPath = "/imag
       // Clear canvas before drawing
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Calculate ratios to emulate object-fit: cover
+      // Calculate ratios to emulate object-fit: contain with an 80% scale to leave plenty of white space
       const hRatio = canvas.width / img.width;
       const vRatio = canvas.height / img.height;
-      const ratio = Math.max(hRatio, vRatio);
+      const ratio = Math.min(hRatio, vRatio) * 0.8;
       
       const centerShift_x = (canvas.width - img.width * ratio) / 2;
       const centerShift_y = (canvas.height - img.height * ratio) / 2;
@@ -102,7 +102,7 @@ export default function CanvasSequence({ scrollContainerRef, folderPath = "/imag
             const ctx = canvas.getContext("2d");
             const hRatio = canvas.width / img.width;
             const vRatio = canvas.height / img.height;
-            const ratio = Math.max(hRatio, vRatio);
+            const ratio = Math.min(hRatio, vRatio) * 0.8;
             const centerShift_x = (canvas.width - img.width * ratio) / 2;
             const centerShift_y = (canvas.height - img.height * ratio) / 2;
             
@@ -124,7 +124,7 @@ export default function CanvasSequence({ scrollContainerRef, folderPath = "/imag
   }, [imagesLoaded, images, frameIndex]);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full -z-10 bg-[#0B0C10]">
+    <div className="fixed top-0 left-0 w-full h-full -z-10 bg-white">
       {!imagesLoaded && (
         <div className="absolute inset-0 flex items-center justify-center text-white/50">
           Loading Culinary Masterpiece...
