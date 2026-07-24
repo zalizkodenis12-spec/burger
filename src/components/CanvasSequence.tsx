@@ -63,10 +63,10 @@ export default function CanvasSequence({ scrollContainerRef, folderPath = "/imag
       // Clear canvas before drawing
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Calculate ratios to emulate object-fit: cover, and zoom in by 1.8x to make the burger HUGE
+      // Calculate ratios to emulate object-fit: cover
       const hRatio = canvas.width / img.width;
       const vRatio = canvas.height / img.height;
-      const ratio = Math.max(hRatio, vRatio) * 1.8;
+      const ratio = Math.max(hRatio, vRatio);
       
       const centerShift_x = (canvas.width - img.width * ratio) / 2;
       const centerShift_y = (canvas.height - img.height * ratio) / 2;
@@ -102,7 +102,7 @@ export default function CanvasSequence({ scrollContainerRef, folderPath = "/imag
             const ctx = canvas.getContext("2d");
             const hRatio = canvas.width / img.width;
             const vRatio = canvas.height / img.height;
-            const ratio = Math.max(hRatio, vRatio) * 1.8;
+            const ratio = Math.max(hRatio, vRatio);
             const centerShift_x = (canvas.width - img.width * ratio) / 2;
             const centerShift_y = (canvas.height - img.height * ratio) / 2;
             
