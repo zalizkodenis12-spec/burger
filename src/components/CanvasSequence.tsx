@@ -63,10 +63,10 @@ export default function CanvasSequence({ scrollContainerRef, folderPath = "/imag
       // Clear canvas before drawing
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Calculate ratios to emulate object-fit: cover
+      // Calculate ratios to emulate object-fit: contain with an 85% scale to leave white space
       const hRatio = canvas.width / img.width;
       const vRatio = canvas.height / img.height;
-      const ratio = Math.max(hRatio, vRatio);
+      const ratio = Math.min(hRatio, vRatio) * 0.85;
       
       const centerShift_x = (canvas.width - img.width * ratio) / 2;
       const centerShift_y = (canvas.height - img.height * ratio) / 2;
@@ -102,7 +102,7 @@ export default function CanvasSequence({ scrollContainerRef, folderPath = "/imag
             const ctx = canvas.getContext("2d");
             const hRatio = canvas.width / img.width;
             const vRatio = canvas.height / img.height;
-            const ratio = Math.max(hRatio, vRatio);
+            const ratio = Math.min(hRatio, vRatio) * 0.85;
             const centerShift_x = (canvas.width - img.width * ratio) / 2;
             const centerShift_y = (canvas.height - img.height * ratio) / 2;
             
