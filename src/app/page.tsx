@@ -6,6 +6,26 @@ import MenuSection from "@/components/MenuSection";
 export default function Home() {
   return (
     <main className="relative w-full bg-white">
+      {/* Absolute Top Navigation Bar (Disappears on scroll) */}
+      <div className="absolute top-0 left-0 w-full h-20 bg-[#FFB800] z-50 flex items-center justify-between px-6 md:px-12 shadow-sm">
+        {/* Left Navigation Links (Printed / Sans-serif) */}
+        <div className="hidden md:flex items-center gap-8 font-sans font-semibold text-sm tracking-widest uppercase text-[#0B0C10]">
+          <a href="#" className="hover:text-white transition-colors cursor-pointer">Головна</a>
+          <a href="#" className="hover:text-white transition-colors cursor-pointer">Про нас</a>
+        </div>
+
+        {/* Center Logo (Handwritten / Caveat) */}
+        <div className="absolute left-1/2 -translate-x-1/2 text-5xl font-bold text-[#0B0C10] whitespace-nowrap">
+          BurgerMax
+        </div>
+
+        {/* Right Navigation Links (Printed / Sans-serif) */}
+        <div className="hidden md:flex items-center gap-8 font-sans font-semibold text-sm tracking-widest uppercase text-[#0B0C10]">
+          <a href="#" className="hover:text-white transition-colors cursor-pointer">Меню</a>
+          <a href="#" className="hover:text-white transition-colors cursor-pointer">Локації</a>
+        </div>
+      </div>
+
       {/* Huge Background Text */}
       <div className="fixed inset-0 w-full h-screen flex items-center justify-center z-0 pointer-events-none">
         <h1 
