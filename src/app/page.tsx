@@ -6,7 +6,7 @@ import MenuSection from "@/components/MenuSection";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 // Helper component for scrollytelling text blocks
-const ScrollBlock = ({ align, title, desc }: { align: "left" | "right", title: string, desc: string }) => {
+const ScrollBlock = ({ align, title, desc, top }: { align: "left" | "right", title: string, desc: string, top: string }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
@@ -14,7 +14,8 @@ const ScrollBlock = ({ align, title, desc }: { align: "left" | "right", title: s
       exit={{ opacity: 0, y: -100 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: false, margin: "-30% 0px -30% 0px" }}
-      className={`w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px] px-4 md:px-0 ${align === "left" ? "mr-auto ml-[2%] lg:ml-[4%]" : "ml-auto mr-[2%] lg:mr-[4%]"}`}
+      className={`absolute w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px] px-4 md:px-0 z-10`}
+      style={{ top, ...(align === "left" ? { left: "5%" } : { right: "5%" }) }}
     >
       <h3 className="text-4xl md:text-5xl font-serif font-bold text-[#0B0C10] mb-6 drop-shadow-sm">{title}</h3>
       <p className="text-xl md:text-2xl font-sans font-medium text-[#0B0C10]/80 leading-relaxed">{desc}</p>
@@ -104,24 +105,28 @@ export default function Home() {
       </div>
 
       {/* Scrollable Content Container for Scrollytelling (800vh height drives the canvas animation) */}
-      <div className="relative z-10 w-full h-[800vh] flex flex-col justify-evenly py-[100vh]">
+      <div className="relative z-10 w-full h-[800vh]">
         <ScrollBlock 
           align="left" 
+          top="150vh"
           title="Свіжі інгредієнти" 
           desc="Тільки найкраще відбірне м'ясо та хрусткі овочі від локальних фермерів. Ми обираємо безкомпромісну якість, яку ви можете відчути в кожному шматочку." 
         />
         <ScrollBlock 
           align="right" 
+          top="350vh"
           title="Авторські рецепти" 
           desc="Наші фірмові соуси – це секрет, який робить смак неповторним. Ідеальні пропорції, розроблені справжніми фанатами бургерної культури." 
         />
         <ScrollBlock 
           align="left" 
+          top="550vh"
           title="Ідеальне просмаження" 
           desc="Соковита котлета, приготована саме так, як ви любите. Максимум насиченого смаку, який розкривається з першим укусом." 
         />
         <ScrollBlock 
           align="right" 
+          top="750vh"
           title="Атмосфера смаку" 
           desc="Бургер – це не просто їжа, це емоція. Насолоджуйтесь кожною хвилиною та кожним смаком у затишній атмосфері нашого закладу." 
         />
