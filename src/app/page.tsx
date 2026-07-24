@@ -135,13 +135,8 @@ export default function Home() {
       {/* The new Menu Section that slides up after the animation finishes */}
       <MenuSection />
 
-      {/* Pure White Section at the end as requested */}
-      <div className="w-full h-screen bg-white relative z-20"></div>
-
-      {/* Empty White Block to receive the bottom transition wave */}
-      <section className="relative w-full min-h-[200vh] bg-white flex items-start justify-center pt-32">
-         {/* Can put future content here */}
-      </section>
+      {/* Pure White Section at the end as requested (long enough for scrolling) */}
+      <div className="w-full h-[200vh] bg-white relative z-10"></div>
     </main>
   );
 }
