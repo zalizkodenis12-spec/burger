@@ -5,9 +5,26 @@ import MenuSection from "@/components/MenuSection";
 
 export default function Home() {
   return (
-    <main className="relative w-full">
-      {/* Background Canvas Sequence */}
-      <CanvasSequence />
+    <main className="relative w-full bg-white">
+      {/* Huge Background Text */}
+      <div className="fixed inset-0 w-full h-screen flex items-center justify-center z-0 pointer-events-none">
+        <h1 
+          className="text-[12vw] md:text-[15vw] font-serif tracking-[0.2em] md:tracking-[0.5em] text-[#0B0C10] font-bold opacity-90 flex w-full justify-between px-[5vw]"
+          style={{ fontFamily: "'Playfair Display', 'Georgia', serif" }}
+        >
+          <span>B</span>
+          <span>U</span>
+          <span>R</span>
+          <span>G</span>
+          <span>E</span>
+          <span>R</span>
+        </h1>
+      </div>
+
+      {/* Background Canvas Sequence with mix-blend-multiply to remove white background */}
+      <div className="relative z-10 mix-blend-multiply">
+        <CanvasSequence />
+      </div>
 
       {/* 
         Scrollable Content Container
