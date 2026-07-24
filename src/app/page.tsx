@@ -42,28 +42,21 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Huge Background Text */}
-      <div className="fixed inset-0 w-full h-screen flex items-center justify-between z-0 pointer-events-none px-[4vw]">
+      {/* Huge Background Text (Scrolls away with the page) */}
+      <div className="absolute top-0 left-0 w-full h-screen flex items-center justify-between z-0 pointer-events-none px-[4vw]">
         <h1 
-          className="text-[12vw] md:text-[14vw] font-serif text-[#0B0C10] font-bold opacity-90 flex w-full justify-between"
+          className="relative text-[12vw] md:text-[14vw] font-serif text-[#0B0C10] font-bold opacity-90 flex w-full justify-between"
           style={{ fontFamily: "'Playfair Display', 'Georgia', serif" }}
         >
-          {/* Left Side: B U R */}
-          <div className="flex w-[40%] justify-between">
-            <span>B</span>
-            <span>U</span>
-            <span>R</span>
-          </div>
-
-          {/* Large Center Gap for the Burger to prevent overlap */}
-          <div className="w-[20%] flex-shrink-0"></div>
-
-          {/* Right Side: G E R */}
-          <div className="flex w-[40%] justify-between">
-            <span>G</span>
-            <span>E</span>
-            <span>R</span>
-          </div>
+          <span>B</span>
+          <span>U</span>
+          <span>R</span>
+          <span>G</span>
+          <span>E</span>
+          <span>R</span>
+          
+          {/* White occlusion overlay to hide the middle letters 'R' and 'G' behind the burger */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[45%] h-[150%] bg-white rounded-[50%] blur-xl"></div>
         </h1>
       </div>
 
